@@ -52,20 +52,20 @@ public class SignInTest {
     }
 
 //Test  line 14 My Account try invaild  phone#,email format 
-//    @Test
-//    public void testInvalidPhoneNumber() throws Exception {
-//        driver.get(baseURL);
-//
-//        Thread.sleep(2000);
-//        // driver.findElement(By.id("twotabsearchtextbox")).sendKeys("oracle");
-//        // driver.findElement(By.name("site-search")).submit();
-//    }
-//
-//    @Test
-//    public void testInvalidEmail() throws Exception {
-//        driver.get(baseURL);
-//
-//    }
+    @Test
+    public void testInvalidPhoneNumber() throws Exception {
+        driver.get(baseURL);
+
+        Thread.sleep(2000);
+         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("oracle");
+         driver.findElement(By.name("site-search")).submit();
+    }
+
+    @Test
+    public void testInvalidEmail() throws Exception {
+        driver.get(baseURL);
+
+    }
 
     @Test
     public void testValidEmailCorrectPassword() {
