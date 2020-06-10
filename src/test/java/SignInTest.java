@@ -107,7 +107,6 @@ public class SignInTest {
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,250)", "");
     }
-<<<<<<< HEAD
     
     @Test
     public void test51WrongEmail() {
@@ -145,6 +144,4 @@ public class SignInTest {
     }
 
 }
-=======
-}
->>>>>>> d7b0fb6dfe6c1af6ee7cce506709616c39e5b69e
+
