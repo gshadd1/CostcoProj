@@ -85,4 +85,40 @@ public class SignInTest {
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,250)", "");
     }
+    
+    @Test
+    public void test51WrongEmail() {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+
+        driver.findElement(By.id("header_sign_in")).click();
+        driver.findElement(By.id("logonId")).click();
+        driver.findElement(By.id("logonId")).clear();
+        driver.findElement(By.id("logonId")).sendKeys("badlogin@gmail.com");
+        driver.findElement(By.id("logonPassword")).click();
+        driver.findElement(By.id("logonPassword")).clear();
+        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
+        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+
+        String loginfailtext = driver.findElement(By.xpath("//*[@id=\"logon\"]/div/div/div[1]")).getText();
+        assertEquals("There was a problem with your information. Please try again.", loginfailtext);
+        //String urltitle = driver.getCurrentUrl();
+        //assertEquals("https://www.costco.P&ddkey=http%3ALogon", urltitle);
+
+    }
+
+   @Test
+    public void test52ResetPassword() {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+        driver.findElement(By.id("header_sign_in")).click();
+        driver.findElement(By.id("logonId")).click();
+        driver.findElement(By.id("logonId")).clear();
+        driver.findElement(By.id("logonId")).sendKeys("passxxwdreset@aol.com");
+        driver.findElement(By.linkText("Forgot Password?")).click();
+
+        String title = driver.getTitle();
+        assertEquals("Forgot Your Password?", title);
+    }
+
 }
