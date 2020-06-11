@@ -1,3 +1,5 @@
+package com.test;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -68,7 +70,7 @@ public class SignInTest {
     }
 
     @Test
-    public void testValidEmailCorrectPassword() {
+    public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
         driver.get(baseURL);
@@ -88,7 +90,7 @@ public class SignInTest {
         // js.executeScript("window.scrollBy(0,250)", "");
     }
     @Test
-    public void testValidEmailInCorrectPassword() {
+    public void test50ValidEmailInCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
         driver.get(baseURL);

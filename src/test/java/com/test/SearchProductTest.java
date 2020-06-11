@@ -1,3 +1,5 @@
+package com.test;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,9 +17,9 @@ import static org.junit.Assert.*;
  *
  * @author gregshadd
  */
-public class RunTest {
+public class SearchProductTest {
     
-    public RunTest() {
+    public SearchProductTest() {
     }
     
     @BeforeClass
