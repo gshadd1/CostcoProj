@@ -70,7 +70,7 @@ public class SignInTest {
     }
 
     @Test
-    public void testValidEmailCorrectPassword() {
+    public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
         driver.get(baseURL);
@@ -90,7 +90,7 @@ public class SignInTest {
         // js.executeScript("window.scrollBy(0,250)", "");
     }
     @Test
-    public void testValidEmailInCorrectPassword() {
+    public void test50ValidEmailInCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
         driver.get(baseURL);
