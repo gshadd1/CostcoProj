@@ -52,7 +52,7 @@ public class SignUpTest {
         driver.close();
     }
 
-    @Test
+    //@Test
     public void test36CreateAccount() {
         driver.get(baseURL);
         WebElement register = driver.findElement(By.id("header_sign_in"));
@@ -65,7 +65,7 @@ public class SignUpTest {
         WebElement why = driver.findElement(By.className("tooltip-without-question-icon"));
         why.click();
     }
-    @Test
+    //@Test
     public void test53UpdateAccountInfo() {
         driver.get(baseURL);
         //driver.manage().window().maximize();

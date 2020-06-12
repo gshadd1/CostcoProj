@@ -54,7 +54,7 @@ public class SignInTest {
     }
 
 //Test  line 14 My Account try invaild  phone#,email format 
-    @Test
+    //@Test
     public void testInvalidPhoneNumber() throws Exception {
         driver.get(baseURL);
 
@@ -63,13 +63,13 @@ public class SignInTest {
          driver.findElement(By.name("site-search")).submit();
     }
 
-    @Test
+    //@Test
     public void testInvalidEmail() throws Exception {
         driver.get(baseURL);
 
     }
 
-    @Test
+    //@Test
     public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
@@ -89,7 +89,7 @@ public class SignInTest {
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,250)", "");
     }
-    @Test
+    //@Test
     public void test50ValidEmailInCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
@@ -110,7 +110,7 @@ public class SignInTest {
         // js.executeScript("window.scrollBy(0,250)", "");
     }
     
-    @Test
+    //@Test
     public void test51WrongEmail() {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -131,7 +131,7 @@ public class SignInTest {
 
     }
 
-   @Test
+   //@Test
     public void test52ResetPassword() {
         driver.get(baseURL);
         //driver.manage().window().maximize();
