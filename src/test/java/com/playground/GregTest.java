@@ -49,7 +49,8 @@ public class GregTest {
         if (os.equals("Mac OS X")) {
             chromeDriverPath = "/Users/gregshadd/Downloads/chromedriver 3";
         } else {
-            chromeDriverPath = "C:\\data\\chromedriver.exe";
+            chromeDriverPath = "C:\\QA\\Drivers\\chromedriver.exe";
+           
         }
 
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
