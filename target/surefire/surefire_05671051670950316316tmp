@@ -1,0 +1,8 @@
+#surefire_0
+#Sat Jun 13 23:19:33 CDT 2020
+maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
+file.encoding=UTF-8
+test=com.test.SearchProductTest
+basedir=C\:\\Users\\shruti\\Documents\\NetBeansProjects\\CostcoProj
+user.dir=C\:\\Users\\shruti\\Documents\\NetBeansProjects\\CostcoProj
+localRepository=C\:\\Users\\shruti\\.m2\\repository
