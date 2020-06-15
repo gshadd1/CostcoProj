@@ -18,6 +18,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  *
@@ -355,6 +356,78 @@ public class SearchProductTest {
         assertEquals("Item 1405494 has a maximum order quantity of 5", limitText); //verify Limit quantity error messege
 
         Thread.sleep(5000);
+    }
+    
+    @Test
+    public void test44SelectProductupdateQuan() throws InterruptedException {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+        driver.findElement(By.id("search-field")).click();
+        driver.findElement(By.id("search-field")).clear();
+        driver.findElement(By.id("search-field")).sendKeys("smoke detectors");
+        driver.findElement(By.id("formcatsearch")).submit();
+        driver.findElement(By.xpath("//img[@alt='Kidde Battery Operated Smoke Alarm, 4-pack']")).click();
+        driver.findElement(By.id("minQtyText")).click();
+        driver.findElement(By.id("minQtyText")).clear();
+        driver.findElement(By.id("minQtyText")).sendKeys("2");
+        driver.findElement(By.id("add-to-cart-btn")).click();
+        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+
+        Thread.sleep(2000);
+        String itemquantext = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText();
+        //System.out.println("QUANTITY=" +itemquantext );
+        assertEquals(" (2 Items)", itemquantext);
+        //driver.findElement(By.linkText("Remove")).click();
+    }
+
+    @Test
+    public void test45DisplayProductInfo() {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+        driver.findElement(By.id("search-field")).click();
+        driver.findElement(By.id("search-field")).clear();
+        driver.findElement(By.id("search-field")).sendKeys("bottled water");
+        driver.findElement(By.id("formcatsearch")).submit();
+        driver.findElement(By.linkText("Perrier Sparkling Mineral Water, 16.9 fl oz, 24-count")).click();
+        driver.findElement(By.linkText("Specifications")).click();
+
+        String iteminfotext = driver.findElement(By.xpath("//*[@id=\"pdp-accordion-collapse-2\"]/div/div/div/div[2]")).getText();
+        //System.out.println("QUANTITY=" +itemquantext );
+        assertEquals("Perrier", iteminfotext);
+    }
+
+    @Test
+    public void test46GrocerySearchItemSuccess() {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+        driver.findElement(By.id("search-dropdown-select")).click();
+        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
+        driver.findElement(By.id("search-dropdown-select")).click();
+        driver.findElement(By.id("search-field")).click();
+        driver.findElement(By.id("search-field")).clear();
+        driver.findElement(By.id("search-field")).sendKeys("cheerios");
+        driver.findElement(By.id("formcatsearch")).submit();
+
+        String foundgrocerytext = driver.findElement(By.xpath("//*[@id=\"rsltCntMsg\"]")).getText();
+        assertEquals("We found 3 results for \"cheerios\"", foundgrocerytext);
+    }
+    
+    @Test
+    public void test47GrocerySearchItemFail() throws InterruptedException {
+        driver.get(baseURL);
+        //driver.manage().window().maximize();
+        driver.findElement(By.id("search-dropdown-select")).click();
+        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
+        driver.findElement(By.id("search-dropdown-select")).click();
+        driver.findElement(By.id("search-field")).click();
+        driver.findElement(By.id("search-field")).clear();
+        driver.findElement(By.id("search-field")).sendKeys("grave markers");
+        driver.findElement(By.id("formcatsearch")).submit();
+        
+        //Thread.sleep(4000);
+        String notfoundgrocerytext = driver.findElement(By.className("rule-message")).getText();
+        //System.out.println("MSG= "+notfoundgrocerytext);
+        assertEquals("We did not find a match for \"grave markers\" in Grocery. Shop related products in other departments:", notfoundgrocerytext);
     }
 
 }

@@ -72,7 +72,7 @@ public class SignInTest2 {
     }
 
     //@Test  
-<<<<<<< HEAD
+
       public void testInvalidEmail() throws Exception{
           
       
@@ -91,25 +91,4 @@ public class SignInTest2 {
   //  Assert.assertEquals("There was a problem with your information. Please try again.", textfiled );
    
       }
-    
-=======
-    public void testInvalidEmail() throws Exception {
-
-        driver.get(baseURL);
-        // driver.get("https://www.costco.com/");
-        driver.findElement(By.id("header_sign_in")).click();
-        driver.findElement(By.id("logonPassword")).click();
-        driver.findElement(By.id("logonPassword")).clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("7520513Co!");
-        driver.findElement(By.id("logonId")).click();
-        driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("gshadd@bademail.com");
-        driver.findElement(By.id("logonPassword")).click();
-        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
-        //  WebElement textfiled = driver.findElement(By.className("critical-notification"));
-        //  Assert.assertEquals("There was a problem with your information. Please try again.", textfiled );
-
-    }
-
->>>>>>> c68041a8eec72f47838982e0c4978a0de59c704d
 }
