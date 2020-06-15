@@ -77,7 +77,7 @@ public class SearchProductTest {
         assertEquals("We're sorry. We were not able to find a match. ", notfoundtext);
     }
 
-    //@Test
+    @Test
     public void test41SearchbyInvalidtoValidProduct() throws InterruptedException {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -96,7 +96,7 @@ public class SearchProductTest {
 
     }
 
-    //@Test
+    @Test
     public void test42SelectProductviaText() {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -110,7 +110,7 @@ public class SearchProductTest {
         assertEquals("XPS7590-9589SLV-PUS", itemmodeltext);
     }
 
-   // @Test
+    @Test
     public void test43SelectProductviaImage() {
         driver.get(baseURL);
         //driver.manage().window().maximize();
