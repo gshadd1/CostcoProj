@@ -128,6 +128,7 @@ public class SearchProductTest {
     @Test
     public void testContinueShopping8() throws Exception {
         driver.get("https://www.costco.com/");
+        Thread.sleep(5000);
         driver.findElement(By.id("Home_Ancillary_0")).click();
         driver.findElement(By.linkText("Kirkland Signature 100% Colombian Coffee, Dark Roast, 3 lbs")).click();
         driver.findElement(By.id("add-to-cart-btn")).click();
@@ -145,7 +146,7 @@ public class SearchProductTest {
         driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         driver.findElement(By.xpath("//input[@value='Shop as Non-Member']")).click();
         driver.findElement(By.xpath("//a[@id='cart-d']/div/div")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.linkText("Remove")).click();
     }
 
@@ -156,7 +157,7 @@ public class SearchProductTest {
         driver.findElement(By.linkText("Kirkland Signature 100% Colombian Coffee, Dark Roast, 3 lbs")).click();
         driver.findElement(By.id("add-to-cart-btn")).click();
         driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         driver.findElement(By.xpath("//div[@id='logon']/div/div/div/div")).click();
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
@@ -168,7 +169,7 @@ public class SearchProductTest {
         driver.findElement(By.id("Home_Ancillary_0")).click();
         driver.findElement(By.linkText("Kirkland Signature 100% Colombian Coffee, Dark Roast, 3 lbs")).click();
         driver.findElement(By.id("add-to-cart-btn")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();
         driver.findElement(By.id("Home_Ancillary_0")).click();
         driver.findElement(By.linkText("Heinz Picnic Pack, 4-count")).click();
@@ -189,7 +190,7 @@ public class SearchProductTest {
         driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         driver.findElement(By.xpath("//input[@value='Shop as Non-Member']")).click();
         driver.findElement(By.id("cart-d")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         assertEquals("Shipping Address", driver.findElement(By.xpath("//div[@id='shipping']/div/div/div/div/h2")).getText());
     }
@@ -205,9 +206,9 @@ public class SearchProductTest {
         driver.findElement(By.id("LogonForm")).submit();
         driver.findElement(By.xpath("//input[@value='Shop as Non-Member']")).click();
         driver.findElement(By.id("cart-d")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.linkText("Remove")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.linkText("Remove")).click();
         assertEquals("Your shopping cart is empty. Please add at least one item to your cart before checking out.", driver.findElement(By.id("empty-cart-id")).getText());
     }
@@ -233,7 +234,7 @@ public class SearchProductTest {
         driver.findElement(By.linkText("Kirkland Signature 100% Colombian Coffee, Dark Roast, 3 lbs")).click();
         driver.findElement(By.id("add-to-cart-btn")).click();
         driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
     }
