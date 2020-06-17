@@ -5,6 +5,8 @@ package com.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.itexps.costco.FileUtil;
+import com.itexps.costco.LoginVO;
 import java.util.concurrent.TimeUnit;
 import junit.framework.Assert;
 import org.junit.After;
@@ -27,13 +29,14 @@ public class SignInTest2 {
     private WebDriver driver;
     private String baseURL;
     private String chromeDriverPath;
-    //  private static LoginVO login = null;
+    private static LoginVO login = null;
 
     public SignInTest2() {
     }
 
     @BeforeClass
     public static void setUpClass() {
+         login=FileUtil.getLoginData();
     }
 
     @AfterClass
@@ -71,7 +74,7 @@ public class SignInTest2 {
         // driver.findElement(By.name("site-search")).submit();
     }
 
-    //@Test  
+    @Test  
 
       public void testInvalidEmail() throws Exception{
           

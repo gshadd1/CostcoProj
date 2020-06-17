@@ -6,6 +6,8 @@ package com.test;
  * and open the template in the editor.
  */
 
+import com.itexps.costco.FileUtil;
+import com.itexps.costco.LoginVO;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,13 +30,14 @@ public class SignInTest {
 
     private WebDriver driver;
     private String baseURL;
-    //  private static LoginVO login = null;
+    private static LoginVO login = null;
 
     public SignInTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
+        login=FileUtil.getLoginData();
     }
 
     @AfterClass
@@ -54,22 +57,6 @@ public class SignInTest {
         driver.close();
     }
 
-//Test  line 14 My Account try invaild  phone#,email format 
-    @Test
-    public void testInvalidPhoneNumber() throws Exception {
-        driver.get(baseURL);
-
-        Thread.sleep(2000);
-         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("oracle");
-         driver.findElement(By.name("site-search")).submit();
-    }
-
-    @Test
-    public void testInvalidEmail() throws Exception {
-        driver.get(baseURL);
-
-    }
-
     @Test
     public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
@@ -79,11 +66,11 @@ public class SignInTest {
         signIn.click();
         WebElement emailAddress = driver.findElement(By.id("logonId"));
         emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys("webscraper.saksham@gmail.com");
+        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());    ///data driven
         //logonPassword
         WebElement passWord = driver.findElement(By.id("logonPassword"));
         passWord.clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("icemountain123");
+        driver.findElement(By.id("logonPassword")).sendKeys(login.getPassword());
         WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
         signINBox.click();
 
@@ -99,7 +86,7 @@ public class SignInTest {
         signIn.click();
         WebElement emailAddress = driver.findElement(By.id("logonId"));
         emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys("webscraper.saksham@gmail.com");
+        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());   //data driven
         //logonPassword
         WebElement passWord = driver.findElement(By.id("logonPassword"));
         passWord.clear();

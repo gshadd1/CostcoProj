@@ -6,6 +6,8 @@ package com.test;
  * and open the template in the editor.
  */
 
+import com.itexps.costco.FileUtil;
+import com.itexps.costco.LoginVO;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -27,12 +29,14 @@ public class SignUpTest {
 
     private WebDriver driver;
     private String baseURL;
+    private static LoginVO login = null;
 
     public SignUpTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
+         login=FileUtil.getLoginData();
     }
 
     @AfterClass
