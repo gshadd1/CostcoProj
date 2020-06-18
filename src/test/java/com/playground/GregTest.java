@@ -102,4 +102,15 @@ public class GregTest {
    // driver.findElement(By.id("customer-service-link")).click();
    // driver.findElement(By.id("yui_3_18_1_6_1592166786155_6")).click();
   }
+  
+     @Test
+  public void test30CostcotravelForm() throws Exception {
+    driver.get("https://www.costco.com/");
+    driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();
+    driver.findElement(By.id("Home_Ancillary_6")).click();
+    driver.findElement(By.linkText("Jamaica Vacations")).click();
+    driver.findElement(By.id("packageSearchWidget_search")).click();
+    driver.findElement(By.xpath("//div[@id='custompath_search_results']/div/div/div/div/p")).click();
+  }
+
 }
