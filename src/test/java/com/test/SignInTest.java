@@ -46,7 +46,15 @@ public class SignInTest {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\QA\\Drivers\\chromedriver.exe");
+          String chromeDriverPath;
+        String os = System.getProperty("os.name");
+        System.out.println("Using System Property: " + os);
+        if (os.equals("Mac OS X")) {
+            chromeDriverPath = "/Users/gregshadd/Downloads/chromedriver 3";
+        } else {
+            chromeDriverPath = "C:\\QA\\Drivers\\chromedriver.exe";
+        }
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
