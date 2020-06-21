@@ -91,7 +91,7 @@ public class SignInTest2 {
     driver.findElement(By.id("logonPassword")).sendKeys("7520513Co!");
     driver.findElement(By.id("logonId")).click();
     driver.findElement(By.id("logonId")).clear();
-    driver.findElement(By.id("logonId")).sendKeys("gshadd@bademail.com");
+    driver.findElement(By.id("logonId")).sendKeys("zgshadd@bademail.com");
     driver.findElement(By.id("logonPassword")).click();
     driver.findElement(By.xpath("//input[@value='Sign In']")).click();  
   //  WebElement textfiled = driver.findElement(By.className("critical-notification"));

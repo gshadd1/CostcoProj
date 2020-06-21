@@ -85,7 +85,7 @@ public class SearchProductTest {
 //LG 55" Class - CX Series - 4K UHD OLED TV - $100 SquareTrade Protection Plan Bundle Included
     }
 
-    //@Test
+    @Test
     public void test40SearchbyInvalidProduct() {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -138,10 +138,12 @@ public class SearchProductTest {
         driver.findElement(By.id("search-field")).clear();
         driver.findElement(By.id("search-field")).sendKeys("dell laptops");
         driver.findElement(By.id("formcatsearch")).submit();
-        driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i7-1065G7 - 1080p']")).click();
-
+        //driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i7-1065G7 - 1080p']")).click();
+          driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i5-1035G1 - 1080p']")).click(); 
         String itemmodeltext = driver.findElement(By.xpath("//*[@id=\"product-body-model-number\"]/span")).getText();
-        assertEquals("i3593-7098BLK-PUS", itemmodeltext);
+
+        assertEquals("i3593-5081BLK-PUS", itemmodeltext);
+                      
     }
 
     @Test
@@ -303,7 +305,7 @@ public class SearchProductTest {
         String quantityText = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText(); //view Cart page (# Items)
         System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         assertEquals(" (2 Items)", quantityText);
-        Thread.sleep(5000);
+        
     }
 
     @Test
@@ -323,18 +325,18 @@ public class SearchProductTest {
         driver.findElement(By.id("logonId")).click(); //email address
         driver.findElement(By.id("logonId")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.id("logonId")).sendKeys(Keys.DELETE);
-        driver.findElement(By.id("logonId")).sendKeys("my email");
+        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());
         driver.findElement(By.id("logonPassword")).click(); //password
         driver.findElement(By.id("logonPassword")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.id("logonPassword")).sendKeys(Keys.DELETE);
-        driver.findElement(By.id("logonPassword")).sendKeys("my password");
+        driver.findElement(By.id("logonPassword")).sendKeys(login.getPassword());
         driver.findElement(By.id("logonPassword")).submit();
         driver.findElement(By.id("cart-d")).click();
         String quantityText = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText(); //view Cart page (# Items)
         System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         assertEquals(" (2 Items)", quantityText); //verify items
         // Cart contains item before logging in and contains the item added while logged in.
-        Thread.sleep(5000);
+        
     }
 
     @Test
@@ -347,11 +349,11 @@ public class SearchProductTest {
         driver.findElement(By.id("logonId")).click(); //email address
         driver.findElement(By.id("logonId")).sendKeys(Keys.CONTROL + "a");//email address
         driver.findElement(By.id("logonId")).sendKeys(Keys.DELETE);//email address
-        driver.findElement(By.id("logonId")).sendKeys("my email");//email address
+        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());//email address
         driver.findElement(By.id("logonPassword")).click(); //password
         driver.findElement(By.id("logonPassword")).sendKeys(Keys.CONTROL + "a");//password
         driver.findElement(By.id("logonPassword")).sendKeys(Keys.DELETE);//password
-        driver.findElement(By.id("logonPassword")).sendKeys("my password");//password
+        driver.findElement(By.id("logonPassword")).sendKeys(login.getPassword());//password
         driver.findElement(By.id("logonPassword")).submit();
         driver.findElement(By.xpath("//a[@id=\"cart-d\"]")).click(); //click on Cart
         Thread.sleep(5000);
@@ -360,7 +362,7 @@ public class SearchProductTest {
         String shippingCost = driver.findElement(By.xpath("//h3[@class=\"h8-style-guide summary-right\"]")).getText();
         System.out.println("Shipping Cost" + shippingCost);
         assertEquals("$0.00", shippingCost); //verify free shipping for over $75
-        Thread.sleep(5000);
+        
     }
 
     @Test
@@ -375,7 +377,7 @@ public class SearchProductTest {
         String outOfStock = driver.findElement(By.xpath("//li[@id=\"add-to-cart\"]")).getText();
         System.out.println("out of stock " + outOfStock);
         assertEquals("", outOfStock); //verify free shipping for over $75
-        Thread.sleep(5000);
+        
 
     }
 
@@ -395,7 +397,7 @@ public class SearchProductTest {
         System.out.println("Error: " + limitText);  // prints items quantity (# Items)
         assertEquals("Item 1405494 has a maximum order quantity of 5", limitText); //verify Limit quantity error messege
 
-        Thread.sleep(5000);
+        
     }
     
     @Test

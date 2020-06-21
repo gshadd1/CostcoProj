@@ -98,7 +98,7 @@ public class SignInTest {
         //logonPassword
         WebElement passWord = driver.findElement(By.id("logonPassword"));
         passWord.clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("icemountain");
+        driver.findElement(By.id("logonPassword")).sendKeys("zicemountain");
         WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
         signINBox.click();
 
@@ -114,7 +114,7 @@ public class SignInTest {
         driver.findElement(By.id("header_sign_in")).click();
         driver.findElement(By.id("logonId")).click();
         driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("badlogin@gmail.com");
+        driver.findElement(By.id("logonId")).sendKeys("zbadlogin@gmail.com");
         driver.findElement(By.id("logonPassword")).click();
         driver.findElement(By.id("logonPassword")).clear();
         driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
@@ -134,7 +134,7 @@ public class SignInTest {
         driver.findElement(By.id("header_sign_in")).click();
         driver.findElement(By.id("logonId")).click();
         driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("passxxwdreset@aol.com");
+        driver.findElement(By.id("logonId")).sendKeys("zpassxxwdreset@aol.com");
         driver.findElement(By.linkText("Forgot Password?")).click();
 
         String title = driver.getTitle();
@@ -152,10 +152,10 @@ public class SignInTest {
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("my email");
+        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(login.getUsername());
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("my password");
+        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(login.getPassword());
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).submit(); //submit by pressing enter
         String actualTitle = driver.getTitle();
         String expectedTitle = "Welcome to Costco Wholesale";
@@ -166,10 +166,10 @@ public class SignInTest {
         //String quantityText = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText(); //view Cart page (# Items)
         //System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         //assertEquals(" (2 Items)", quantityText);*/
-        Thread.sleep(5000);
+        
     }
     
-    //@Ignore()
+    
     @Test
     public void testInvalidSignIn() throws Exception {
         // Add item and view cart before logging in
@@ -181,7 +181,7 @@ public class SignInTest {
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("abc@abc.com");
+        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("zabc@abc.com");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("abc123");
@@ -189,7 +189,7 @@ public class SignInTest {
         String signInError = driver.findElement(By.xpath("//div[@class=\"critical-notification form-group\"]")).getText(); //Sign In Error
         System.out.println("Error" + signInError);  // prints items Sign In Error
         assertEquals("There was a problem with your information. Please try again." ,signInError);
-        Thread.sleep(5000);
+        
     }
 
 
