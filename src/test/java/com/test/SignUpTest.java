@@ -85,10 +85,10 @@ public class SignUpTest {
         driver.findElement(By.id("header_sign_in")).click();
         driver.findElement(By.id("logonId")).click();
         driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("ktastrophe@wowwway.com");
+        driver.findElement(By.id("logonId")).sendKeys("youremail@you.com");
         driver.findElement(By.id("logonPassword")).click();
         driver.findElement(By.id("logonPassword")).clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("29costcosux!!");
+        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
         driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         driver.findElement(By.xpath("//a[@id='myaccount-d']/i")).click();
         driver.findElement(By.linkText("Account Details")).click();
