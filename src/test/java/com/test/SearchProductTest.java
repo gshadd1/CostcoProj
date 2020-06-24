@@ -413,7 +413,7 @@ public class SearchProductTest {
         driver.findElement(By.id("minQtyText")).clear();
         driver.findElement(By.id("minQtyText")).sendKeys("2");
         driver.findElement(By.id("add-to-cart-btn")).click();
-        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+        driver.findElement(By.xpath("")"//*[@id=\"costcoModalText\"]/div[2]/div[2]/a/button").click();
 
         Thread.sleep(2000);
         String itemquantext = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText();
