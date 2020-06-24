@@ -13,7 +13,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -65,7 +68,7 @@ public class ManagerTest {
     public void tearDown() {
         // driver.close();
     }
-  // @Test
+   @Test
   public void test22FindAWarehouse() throws Exception {
       //Finding warehouse by a given zip code
    driver.get(baseURL);
@@ -89,7 +92,7 @@ public class ManagerTest {
   // assertEquals("Bloomingdale", loc);
   }
   
-  //@Test
+  @Test
   //Working last tested on 6-23
   public void test22bCustomerservice() throws Exception {
     driver.get(baseURL);
@@ -100,7 +103,7 @@ public class ManagerTest {
    assertEquals("Welcome to Costco Customer Service.", ele2);
   }
   
-   // @Test
+    @Test
   public void test22cEmailOffer() throws Exception{
   driver.get(baseURL);
   WebElement ele = driver.findElement(By.id("email-signup-link"));
@@ -145,7 +148,7 @@ public class ManagerTest {
 
   }
   
-  //@Test
+  @Test
   public void test26ValidZipAccepted() throws InterruptedException{
     driver.manage().window().maximize();
     driver.get(baseURL); 
@@ -167,4 +170,51 @@ public class ManagerTest {
     assertEquals("Delivery ZIP Code: 70001", ele3);
     }
 
+     @Test
+  public void test30CostcotravelForm() throws Exception {
+    driver.get("https://www.costco.com/");
+    driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();
+    driver.findElement(By.id("Home_Ancillary_6")).click();
+    driver.findElement(By.linkText("Jamaica Vacations")).click();
+    driver.findElement(By.id("packageSearchWidget_search")).click();
+    driver.findElement(By.xpath("//div[@id='custompath_search_results']/div/div/div/div/p")).click();
+    
+    
+  }
+  
+  private boolean isElementPresent(By by) {
+    try {
+      driver.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      driver.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
+
+  private String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+  
+ 
+  
 }
