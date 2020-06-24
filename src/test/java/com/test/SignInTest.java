@@ -94,11 +94,11 @@ public class SignInTest {
         signIn.click();
         WebElement emailAddress = driver.findElement(By.id("logonId"));
         emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());   //data driven
+        driver.findElement(By.id("logonId")).sendKeys("TESTS");   //data driven
         //logonPassword
         WebElement passWord = driver.findElement(By.id("logonPassword"));
         passWord.clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("zicemountain");
+        driver.findElement(By.id("logonPassword")).sendKeys("zicZemountain");
         WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
         signINBox.click();
 
@@ -114,7 +114,7 @@ public class SignInTest {
         driver.findElement(By.id("header_sign_in")).click();
         driver.findElement(By.id("logonId")).click();
         driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("zbadlogin@gmail.com");
+        driver.findElement(By.id("logonId")).sendKeys("zxbadlogin@gmail.com");
         driver.findElement(By.id("logonPassword")).click();
         driver.findElement(By.id("logonPassword")).clear();
         driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
@@ -181,7 +181,7 @@ public class SignInTest {
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("zabc@abc.com");
+        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("zxabc@abc.com");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("abc123");
