@@ -78,7 +78,7 @@ public class SignInTest2 {
         // driver.findElement(By.name("site-search")).submit();
     }
 
-    @Test  
+   // @Test  
 
       public void testInvalidEmail() throws Exception{
           
@@ -100,7 +100,7 @@ public class SignInTest2 {
   //*****************************
  }
       
-  @Test
+ // @Test
     public void test22FindAWarehouse() throws Exception {
       //Finding warehouse by a given zip code
    driver.get(baseURL);
@@ -194,7 +194,7 @@ public class SignInTest2 {
   }
   
   
-   @Test
+  // @Test
   public void test30CostcotravelForm() throws Exception {
     driver.get("https://www.costco.com/");
     driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();

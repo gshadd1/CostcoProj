@@ -64,7 +64,7 @@ public class GregTest {
        driver.quit();
     }
 
-     @Test
+    // @Test
   public void test22FindSpecificPage() throws Exception {
     driver.get("https://www.costco.com/");
    // driver.findElement(By.id("warehouse-search-field-desktop")).click();
@@ -103,7 +103,7 @@ public class GregTest {
    // driver.findElement(By.id("yui_3_18_1_6_1592166786155_6")).click();
   }
   
-     @Test
+   //  @Test
   public void test30CostcotravelForm() throws Exception {
     driver.get("https://www.costco.com/");
     driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();
