@@ -7,7 +7,9 @@ package com.test;
  */
 
 import com.itexps.costco.FileUtil;
+import com.itexps.costco.HomePage;
 import com.itexps.costco.LoginVO;
+import com.itexps.costco.SignInPage;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,6 +23,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  *
@@ -57,34 +60,39 @@ public class SignInTest {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
     }
 
     @After
     public void tearDown() {
         driver.close();
     }
-
+    
     @Test
-    public void test49ValidEmailCorrectPassword() {
-        // webscraper.saksham@gmail.com
-        // icemountain123
+    public void test49ValidEmailCorrectPassword() throws Exception {
+        
         driver.get(baseURL);
-        WebElement signIn = driver.findElement(By.id("header_sign_in"));
-        signIn.click();
-        WebElement emailAddress = driver.findElement(By.id("logonId"));
-        emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys(login.getUsername());    ///data driven
-        //logonPassword
-        WebElement passWord = driver.findElement(By.id("logonPassword"));
-        passWord.clear();
-        driver.findElement(By.id("logonPassword")).sendKeys(login.getPassword());
-        WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
-        signINBox.click();
-
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("window.scrollBy(0,250)", "");
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.validlogin(login);
+        Thread.sleep(3000);
+        String myaccount = driver.findElement(By.id("myaccount-d")).getText();
+        assertEquals("My Account ", myaccount);
+        
+//        WebElement signIn = driver.findElement(By.id("header_sign_in"));
+//        signIn.click();
+//        WebElement emailAddress = driver.findElement(By.id("logonId"));
+//        emailAddress.clear();
+//        driver.findElement(By.id("logonId")).sendKeys("webscraper.saksham@gmail.com");
+//        //logonPassword
+//        WebElement passWord = driver.findElement(By.id("logonPassword"));
+//        passWord.clear();
+//        driver.findElement(By.id("logonPassword")).sendKeys("icemountain123");
+//        WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
+//        signINBox.click();  
     }
+
     @Test
     public void test50ValidEmailInCorrectPassword() {
         // webscraper.saksham@gmail.com
@@ -107,18 +115,23 @@ public class SignInTest {
     }
     
     @Test
-    public void test51WrongEmail() {
+    public void test51WrongEmail() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
 
-        driver.findElement(By.id("header_sign_in")).click();
-        driver.findElement(By.id("logonId")).click();
-        driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("zxbadlogin@gmail.com");
-        driver.findElement(By.id("logonPassword")).click();
-        driver.findElement(By.id("logonPassword")).clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
-        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+        //driver.findElement(By.id("header_sign_in")).click();
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+
+//        driver.findElement(By.id("logonId")).click();
+//        driver.findElement(By.id("logonId")).clear();
+//        driver.findElement(By.id("logonId")).sendKeys("badzlogin@gmail.com");
+//        driver.findElement(By.id("logonPassword")).click();
+//        driver.findElement(By.id("logonPassword")).clear();
+//        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
+//        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.invalidlogin("badzlogin@gmail.com", "123###XXX");
 
         String loginfailtext = driver.findElement(By.xpath("//*[@id=\"logon\"]/div/div/div[1]")).getText();
         assertEquals("There was a problem with your information. Please try again.", loginfailtext);
@@ -127,15 +140,21 @@ public class SignInTest {
 
     }
 
-   @Test
-    public void test52ResetPassword() {
+    @Test
+    public void test52ResetPassword() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("header_sign_in")).click();
-        driver.findElement(By.id("logonId")).click();
-        driver.findElement(By.id("logonId")).clear();
-        driver.findElement(By.id("logonId")).sendKeys("zpassxxwdreset@aol.com");
-        driver.findElement(By.linkText("Forgot Password?")).click();
+        //driver.findElement(By.id("header_sign_in")).click();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+
+//        driver.findElement(By.id("logonId")).click();
+//        driver.findElement(By.id("logonId")).clear();
+//        driver.findElement(By.id("logonId")).sendKeys("passxxwdreset@aol.com");
+//        driver.findElement(By.linkText("Forgot Password?")).click();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.resetpassword("passxxwdreset@aol.com");
 
         String title = driver.getTitle();
         assertEquals("Forgot Your Password?", title);

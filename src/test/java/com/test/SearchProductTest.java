@@ -6,6 +6,7 @@ package com.test;
  * and open the template in the editor.
  */
 import com.itexps.costco.FileUtil;
+import com.itexps.costco.HomePage;
 import com.itexps.costco.LoginVO;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
@@ -23,6 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,7 +44,7 @@ public class SearchProductTest {
 
     @BeforeClass
     public static void setUpClass() {
-         login=FileUtil.getLoginData();
+        login = FileUtil.getLoginData();
     }
 
     @AfterClass
@@ -51,7 +53,7 @@ public class SearchProductTest {
 
     @Before
     public void setUp() {
-        
+
         String chromeDriverPath;
         String os = System.getProperty("os.name");
         System.out.println("Using System Property: " + os);
@@ -63,7 +65,7 @@ public class SearchProductTest {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
     }
 
     @After
@@ -72,13 +74,16 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test38SearchbyItemnumber() {
+    public void test38SearchbyItemnumber() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("9550010");
-        driver.findElement(By.id("formcatsearch")).submit();
+        //driver.findElement(By.id("search-field")).click();
+        //driver.findElement(By.id("search-field")).clear();
+        //driver.findElement(By.id("search-field")).sendKeys("9550010");
+        //driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("9550010");
 
         String itemmodeltext = driver.findElement(By.xpath("//*[@id=\"product-body-model-number\"]/span")).getText();
         assertEquals("OLED55CXAUA.AUS", itemmodeltext);
@@ -86,13 +91,16 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test40SearchbyInvalidProduct() {
+    public void test40SearchbyInvalidProduct() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("gravemarker");
-        driver.findElement(By.id("formcatsearch")).submit();
+        //driver.findElement(By.id("search-field")).click();
+        //driver.findElement(By.id("search-field")).clear();
+        //driver.findElement(By.id("search-field")).sendKeys("gravemarker");
+        //driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("gravemarker");
 
         String notfoundtext = driver.findElement(By.xpath("//*[@id=\"no-results\"]/h2")).getText();
         assertEquals("We're sorry. We were not able to find a match. ", notfoundtext);
@@ -139,11 +147,11 @@ public class SearchProductTest {
         driver.findElement(By.id("search-field")).sendKeys("dell laptops");
         driver.findElement(By.id("formcatsearch")).submit();
         //driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i7-1065G7 - 1080p']")).click();
-          driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i5-1035G1 - 1080p']")).click(); 
+        driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i5-1035G1 - 1080p']")).click();
         String itemmodeltext = driver.findElement(By.xpath("//*[@id=\"product-body-model-number\"]/span")).getText();
 
         assertEquals("i3593-5081BLK-PUS", itemmodeltext);
-                      
+
     }
 
     @Test
@@ -176,6 +184,7 @@ public class SearchProductTest {
         Thread.sleep(10000);
         driver.findElement(By.linkText("Remove")).click();
     }
+
     @Test
     public void testCheckout7() throws Exception {
         driver.get("https://www.costco.com/");
@@ -201,7 +210,7 @@ public class SearchProductTest {
         driver.findElement(By.id("Home_Ancillary_0")).click();
         driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
         driver.findElement(By.id("add-to-cart-btn")).click();
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='costcoModalText']/div[2]/div/button"))).click();
         driver.findElement(By.id("Home_Ancillary_0")).click();
         driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).click();
@@ -210,7 +219,6 @@ public class SearchProductTest {
         assertEquals("Frito Lay Classic Mix, Variety Pack, 30-count", driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).getText());
         assertEquals("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count", driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).getText());
     }
-
 
     @Test
     public void testDelivery10() throws Exception {
@@ -241,11 +249,11 @@ public class SearchProductTest {
         driver.findElement(By.xpath("//input[@value='Shop as Non-Member']")).click();
         Thread.sleep(10000);
         driver.findElement(By.id("cart-d")).click();
-        while(found == true){
-            try{
+        while (found == true) {
+            try {
                 Thread.sleep(15000);
-               driver.findElement(By.linkText("Remove")).click();
-            }catch(NoSuchElementException e){
+                driver.findElement(By.linkText("Remove")).click();
+            } catch (NoSuchElementException e) {
                 found = false;
                 System.out.println(e);
             }
@@ -280,7 +288,7 @@ public class SearchProductTest {
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
     }
-    
+
     @Test
     public void testAddItem() throws Exception {
         // Add item and view cart before logging in
@@ -305,7 +313,7 @@ public class SearchProductTest {
         String quantityText = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText(); //view Cart page (# Items)
         System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         assertEquals(" (2 Items)", quantityText);
-        
+
     }
 
     @Test
@@ -336,7 +344,7 @@ public class SearchProductTest {
         System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         assertEquals(" (2 Items)", quantityText); //verify items
         // Cart contains item before logging in and contains the item added while logged in.
-        
+
     }
 
     @Test
@@ -362,7 +370,7 @@ public class SearchProductTest {
         String shippingCost = driver.findElement(By.xpath("//h3[@class=\"h8-style-guide summary-right\"]")).getText();
         System.out.println("Shipping Cost" + shippingCost);
         assertEquals("$0.00", shippingCost); //verify free shipping for over $75
-        
+
     }
 
     @Test
@@ -377,7 +385,6 @@ public class SearchProductTest {
         String outOfStock = driver.findElement(By.xpath("//li[@id=\"add-to-cart\"]")).getText();
         System.out.println("out of stock " + outOfStock);
         assertEquals("", outOfStock); //verify free shipping for over $75
-        
 
     }
 
@@ -397,9 +404,8 @@ public class SearchProductTest {
         System.out.println("Error: " + limitText);  // prints items quantity (# Items)
         assertEquals("Item 1405494 has a maximum order quantity of 5", limitText); //verify Limit quantity error messege
 
-        
     }
-    
+
     @Test
     public void test44SelectProductupdateQuan() throws InterruptedException {
         driver.get(baseURL);
@@ -453,7 +459,7 @@ public class SearchProductTest {
         String foundgrocerytext = driver.findElement(By.xpath("//*[@id=\"rsltCntMsg\"]")).getText();
         assertEquals("We found 3 results for \"cheerios\"", foundgrocerytext);
     }
-    
+
     @Test
     public void test47GrocerySearchItemFail() throws InterruptedException {
         driver.get(baseURL);
@@ -465,7 +471,7 @@ public class SearchProductTest {
         driver.findElement(By.id("search-field")).clear();
         driver.findElement(By.id("search-field")).sendKeys("grave markers");
         driver.findElement(By.id("formcatsearch")).submit();
-        
+
         //Thread.sleep(4000);
         String notfoundgrocerytext = driver.findElement(By.className("rule-message")).getText();
         //System.out.println("MSG= "+notfoundgrocerytext);
