@@ -63,7 +63,7 @@ public class SearchProductTest {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
     @After
