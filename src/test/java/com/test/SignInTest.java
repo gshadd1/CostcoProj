@@ -102,7 +102,7 @@ public class SignInTest {
         signIn.click();
         WebElement emailAddress = driver.findElement(By.id("logonId"));
         emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys("TESTS");   //data driven
+        driver.findElement(By.id("logonId")).sendKeys("ZTESTS");   //data driven
         //logonPassword
         WebElement passWord = driver.findElement(By.id("logonPassword"));
         passWord.clear();
@@ -131,7 +131,7 @@ public class SignInTest {
 //        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
 //        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
-        signinpage.invalidlogin("badzlogin@gmail.com", "123###XXX");
+        signinpage.invalidlogin("badxlogin@gmail.com", "123###XXX");
 
         String loginfailtext = driver.findElement(By.xpath("//*[@id=\"logon\"]/div/div/div[1]")).getText();
         assertEquals("There was a problem with your information. Please try again.", loginfailtext);
@@ -154,7 +154,7 @@ public class SignInTest {
 //        driver.findElement(By.id("logonId")).sendKeys("passxxwdreset@aol.com");
 //        driver.findElement(By.linkText("Forgot Password?")).click();
         SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
-        signinpage.resetpassword("passxxwdreset@aol.com");
+        signinpage.resetpassword("passzzwdreset@aol.com");
 
         String title = driver.getTitle();
         assertEquals("Forgot Your Password?", title);
@@ -200,7 +200,7 @@ public class SignInTest {
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("zxabc@abc.com");
+        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("yyabc@abc.com");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
         driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("abc123");
