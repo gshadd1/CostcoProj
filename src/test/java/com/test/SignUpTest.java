@@ -101,7 +101,7 @@ public class SignUpTest {
 //        driver.findElement(By.id("logonPassword")).sendKeys("29costcosux!!");
 //        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
-        signinpage.validkirklogin("ktastrophe@wowway.com", "29costcosux!!");
+        signinpage.validkirklogin("k@wowway.com", "costco");
 
 //        driver.findElement(By.xpath("//a[@id='myaccount-d']/i")).click();
 //        driver.findElement(By.linkText("Account Details")).click();
