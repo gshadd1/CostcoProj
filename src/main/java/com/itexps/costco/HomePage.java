@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  *
@@ -24,6 +25,10 @@ public class HomePage {
     //Search Box
     @FindBy(id = "search-field")
     private WebElement searchBox;
+    
+    //Search by Grocery Dropdown
+    @FindBy(id = "search-dropdown-select")
+    private WebElement grocerydropdown;
 
     //SignIn - Register click select
     @FindBy(id = "header_sign_in")
@@ -36,6 +41,23 @@ public class HomePage {
     public void search(String text)
             throws Exception {
         try {
+            searchBox.click();
+            searchBox.clear();
+            searchBox.sendKeys(text);
+            searchBox.sendKeys(Keys.ENTER);
+
+            //   LoginPage login = new LoginPage(driver);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void searchgrocery(String text)
+            throws Exception {
+        try {
+            grocerydropdown.click();
+            new Select(grocerydropdown).selectByVisibleText("Grocery");
+            grocerydropdown.click();
             searchBox.click();
             searchBox.clear();
             searchBox.sendKeys(text);

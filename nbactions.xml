@@ -7,7 +7,7 @@
             </packagings>
             <goals>
                 <goal>install</goal>
-            </goals>           
+            </goals>
         </action>
         <action>
             <actionName>rebuild</actionName>

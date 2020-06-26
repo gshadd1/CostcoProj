@@ -66,6 +66,7 @@ public class SearchProductTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @After
@@ -107,13 +108,17 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test41SearchbyInvalidtoValidProduct() throws InterruptedException {
+    public void test41SearchbyInvalidtoValidProduct() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("gravemarker");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("gravemarker");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("gravemarker");
+
         driver.findElement(By.id("search-field2")).click();
         driver.findElement(By.id("search-field2")).clear();
         driver.findElement(By.id("search-field2")).sendKeys("bubble gum");
@@ -126,13 +131,17 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test42SelectProductviaText() {
+    public void test42SelectProductviaText() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("dell laptop");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("dell laptop");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("dell laptop");
+
         driver.findElement(By.linkText("Dell XPS 15 Touchscreen Laptop - 9th Gen Intel Core i9-9980HK - GeForce GTX 1650 - 4K UHD")).click();
 
         String itemmodeltext = driver.findElement(By.xpath("//*[@id=\"product-body-model-number\"]/span")).getText();
@@ -140,27 +149,29 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test43SelectProductviaImage() {
+    public void test43SelectProductviaImage() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("dell laptops");
-        driver.findElement(By.id("formcatsearch")).submit();
-        //driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i7-1065G7 - 1080p']")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("dell laptops");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("dell laptops");
+
         driver.findElement(By.xpath("//img[@alt='Dell Inspiron 15 3000 Touchscreen Laptop - 10th Gen Intel Core i5-1035G1 - 1080p']")).click();
         String itemmodeltext = driver.findElement(By.xpath("//*[@id=\"product-body-model-number\"]/span")).getText();
 
         assertEquals("i3593-5081BLK-PUS", itemmodeltext);
-
     }
 
     @Test
     public void testContinueShopping8() throws Exception {
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
-        try{
+        try {
             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("No grocery tab detected");
         }
         driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
@@ -185,21 +196,21 @@ public class SearchProductTest {
         Thread.sleep(10000);
         driver.findElement(By.xpath("//a[@id='cart-d']/div/div")).click();
         Thread.sleep(10000);
-        try{
+        try {
             driver.findElement(By.linkText("Remove")).click();
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("No items in cart");
         }
-        
+
     }
 
     @Test
     public void testCheckout7() throws Exception {
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
-        try{
+        try {
             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("No grocery tab detected");
         }
         Thread.sleep(3000);
@@ -292,9 +303,9 @@ public class SearchProductTest {
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");
         Thread.sleep(3000);
-        try{
+        try {
             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("No grocery tab detected");
         }
         driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
@@ -424,19 +435,24 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test44SelectProductupdateQuan() throws InterruptedException {
+    public void test44SelectProductupdateQuan() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("smoke detectors");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("smoke detectors");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("smoke detectors");
+
         driver.findElement(By.xpath("//img[@alt='Kidde Battery Operated Smoke Alarm, 4-pack']")).click();
         driver.findElement(By.id("minQtyText")).click();
         driver.findElement(By.id("minQtyText")).clear();
         driver.findElement(By.id("minQtyText")).sendKeys("2");
         driver.findElement(By.id("add-to-cart-btn")).click();
         driver.findElement(By.xpath("//*[@id=\"costcoModalText\"]/div[2]/div[2]/a/button")).click();
+        //driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
 
         Thread.sleep(2000);
         String itemquantext = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText();
@@ -446,48 +462,57 @@ public class SearchProductTest {
     }
 
     @Test
-    public void test45DisplayProductInfo() {
+    public void test45DisplayProductInfo() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("bottled water");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("bottled water");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.search("bottled water");
+
         driver.findElement(By.linkText("Perrier Sparkling Mineral Water, 16.9 fl oz, 24-count")).click();
         driver.findElement(By.linkText("Specifications")).click();
 
         String iteminfotext = driver.findElement(By.xpath("//*[@id=\"pdp-accordion-collapse-2\"]/div/div/div/div[2]")).getText();
-        //System.out.println("QUANTITY=" +itemquantext );
         assertEquals("Perrier", iteminfotext);
     }
 
     @Test
-    public void test46GrocerySearchItemSuccess() {
+    public void test46GrocerySearchItemSuccess() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-dropdown-select")).click();
-        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
-        driver.findElement(By.id("search-dropdown-select")).click();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("cheerios");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-dropdown-select")).click();
+//        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
+//        driver.findElement(By.id("search-dropdown-select")).click();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("cheerios");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.searchgrocery("cheerios");
 
         String foundgrocerytext = driver.findElement(By.xpath("//*[@id=\"rsltCntMsg\"]")).getText();
         assertEquals("We found 3 results for \"cheerios\"", foundgrocerytext);
     }
 
     @Test
-    public void test47GrocerySearchItemFail() throws InterruptedException {
+    public void test47GrocerySearchItemFail() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
-        driver.findElement(By.id("search-dropdown-select")).click();
-        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
-        driver.findElement(By.id("search-dropdown-select")).click();
-        driver.findElement(By.id("search-field")).click();
-        driver.findElement(By.id("search-field")).clear();
-        driver.findElement(By.id("search-field")).sendKeys("grave markers");
-        driver.findElement(By.id("formcatsearch")).submit();
+//        driver.findElement(By.id("search-dropdown-select")).click();
+//        new Select(driver.findElement(By.id("search-dropdown-select"))).selectByVisibleText("Grocery");
+//        driver.findElement(By.id("search-dropdown-select")).click();
+//        driver.findElement(By.id("search-field")).click();
+//        driver.findElement(By.id("search-field")).clear();
+//        driver.findElement(By.id("search-field")).sendKeys("grave markers");
+//        driver.findElement(By.id("formcatsearch")).submit();
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.searchgrocery("grave markers");
 
         //Thread.sleep(4000);
         String notfoundgrocerytext = driver.findElement(By.className("rule-message")).getText();

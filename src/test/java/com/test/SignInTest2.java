@@ -62,6 +62,7 @@ public class SignInTest2 {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @After
