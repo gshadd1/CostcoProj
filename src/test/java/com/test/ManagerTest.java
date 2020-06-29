@@ -15,6 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -63,6 +64,7 @@ public class ManagerTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1600, 900));
         driver.manage().window().maximize();
     }
 

@@ -5,7 +5,6 @@ package com.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import com.itexps.costco.AccountDetailsPage;
 import com.itexps.costco.FileUtil;
 import com.itexps.costco.HomePage;
@@ -19,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,7 +40,7 @@ public class SignUpTest {
 
     @BeforeClass
     public static void setUpClass() {
-         login=FileUtil.getLoginData();
+        login = FileUtil.getLoginData();
     }
 
     @AfterClass
@@ -49,7 +49,7 @@ public class SignUpTest {
 
     @Before
     public void setUp() {
-         String chromeDriverPath;
+        String chromeDriverPath;
         String os = System.getProperty("os.name");
         System.out.println("Using System Property: " + os);
         if (os.equals("Mac OS X")) {
@@ -62,6 +62,7 @@ public class SignUpTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1600, 900));
         driver.manage().window().maximize();
     }
 
@@ -83,7 +84,7 @@ public class SignUpTest {
         WebElement why = driver.findElement(By.className("tooltip-without-question-icon"));
         why.click();
     }
-    
+
     @Test
     public void test53UpdateAccountInfo() throws Exception {
         driver.get(baseURL);
@@ -118,5 +119,5 @@ public class SignUpTest {
         String mobileudatetext = driver.findElement(By.xpath("//*[@id=\"notification-message\"]/p")).getText();
         assertEquals("Information Updated", mobileudatetext);
     }
- 
+
 }

@@ -16,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -66,6 +67,7 @@ public class SearchProductTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1600, 900));
         driver.manage().window().maximize();
     }
 
