@@ -66,6 +66,7 @@ public class SearchProductTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1600, 900)); 
         driver.manage().window().maximize();
     }
 
