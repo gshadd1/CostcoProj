@@ -27,7 +27,7 @@ public class FileUtil {
         try {
 
             // FileInputStream inputStream = new FileInputStream(new File("C:\\Users\\shruti\\Documents\\NetBeansProjects\\CostcoProj\\costco.xlsx"));
-            FileInputStream inputStream = new FileInputStream(new File("C:\\data\\Jenkins\\workspace\\CostcoProj\\costco.xlsx"));
+            FileInputStream inputStream = new FileInputStream(new File("C:\\data\\costco.xlsx"));
             Workbook workbook = new XSSFWorkbook(inputStream);
             //getting first worksheet
             Sheet firstSheet = workbook.getSheetAt(0);
