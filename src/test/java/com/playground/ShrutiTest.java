@@ -58,7 +58,7 @@ public class ShrutiTest {
         //driver.close();
     }
     
-    @Test
+    //@Test
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("Home_Ancillary_0")).click();
@@ -71,7 +71,7 @@ public class ShrutiTest {
     }
 
     
- @Test
+ //@Test
     public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
