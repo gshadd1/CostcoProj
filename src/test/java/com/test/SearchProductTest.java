@@ -176,12 +176,13 @@ public class SearchProductTest {
         try{
             driver.findElement(By.id("Home_Ancillary_0")).click();
         }catch(NoSuchElementException e){
-        driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).click();
+             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+    }
+         driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).click();
         Thread.sleep(3000);
         driver.findElement(By.id("add-to-cart-btn")).click();
         Thread.sleep(3000);
         driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();
-    }
     }
 
     @Test
@@ -235,18 +236,16 @@ public class SearchProductTest {
     public void testCheckout7() throws Exception{
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
-        try{
+         try{
             driver.findElement(By.id("Home_Ancillary_0")).click();
         }catch(NoSuchElementException e){
-
-     
-        
+             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+    }
         CartPage cart = PageFactory.initElements(driver, CartPage.class); //page object used here
         Thread.sleep(3000);
-        driver.findElement(By.linkText("Dixie Ultra 10 1/16 in Paper Plate, 186-count")).click();
+        driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).click();
         Thread.sleep(3000);
         cart.addToCartFunction();  //with page object
-    }
     }
 //    @Test
 //    public void testAddMoreItems9() throws Exception {
@@ -269,7 +268,7 @@ public class SearchProductTest {
     public void testAddMoreItems9() throws Exception {
         driver.get("https://www.costco.com/");
         CartPage cart2 = PageFactory.initElements(driver, CartPage.class);
-        cart2.addAnItemTOCart("Frito Lay Classic Mix, Variety Pack, 30-count");   //page object used here
+        cart2.addAnItemTOCart("Splenda No Calorie Sweetener, 1 g, 1,200-count");   //page object used here
         
 //        Thread.sleep(3000);
 //        driver.findElement(By.id("Home_Ancillary_0")).click();
@@ -279,13 +278,13 @@ public class SearchProductTest {
 //        Thread.sleep(3000);
 //        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();//view cart
 
-         cart2.addAnItemTOCart("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count");
+         cart2.addAnItemTOCart("Sunny D, Tangy Original, 11.3 fl oz, 30-count");
 //        driver.findElement(By.id("Home_Ancillary_0")).click();
 //        driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).click();
 //        driver.findElement(By.id("add-to-cart-btn")).click();
 //        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();//view cart
-        assertEquals("Frito Lay Classic Mix, Variety Pack, 30-count", driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).getText());
-        assertEquals("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count", driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).getText());
+        assertEquals("Splenda No Calorie Sweetener, 1 g, 1,200-count", driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).getText());
+        assertEquals("Sunny D, Tangy Original, 11.3 fl oz, 30-count", driver.findElement(By.linkText("Sunny D, Tangy Original, 11.3 fl oz, 30-count")).getText());
     }
 
     @Test
@@ -365,18 +364,18 @@ public class SearchProductTest {
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");   
         Thread.sleep(3000);
-       try{
-          driver.findElement(By.id("Home_Ancillary_0")).click();
-       }catch(NoSuchElementException e){
-           System.out.println("No grocery tab detected");
-       }
+        try{
+            driver.findElement(By.id("Home_Ancillary_0")).click();
+        }catch(NoSuchElementException e){
+             driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+    }
       // CartPage cart = PageFactory.initElements(driver, CartPage.class);( want to convert this also in page object but not done
        
-      driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+      driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).click();
     
       driver.findElement(By.id("add-to-cart-btn")).click();
-       Thread.sleep(4000);
-       driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+       Thread.sleep(15000);
+       driver.findElement(By.xpath("//*[@id=\"costcoModalText\"]/div[2]/div[2]/a/button")).click();
        Thread.sleep(15000);
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
