@@ -23,7 +23,7 @@ public class FileUtil {
 
     public static LoginVO getLoginData() {
         // LoginVO login=new LoginVO(); 
-        LoginVO login = null;   //i changed login to loginChange//
+        LoginVO loginChange = null;   //i changed login to loginChange//
         try {
 
             // FileInputStream inputStream = new FileInputStream(new File("C:\\Users\\shruti\\Documents\\NetBeansProjects\\CostcoProj\\costco.xlsx"));
@@ -38,14 +38,14 @@ public class FileUtil {
             c = r.getCell(1); //username value
             String password = c.getStringCellValue();
 
-            login = new LoginVO(username, password);
+            loginChange = new LoginVO(username, password);
 
-            System.out.println(login);
+            System.out.println(loginChange);
             inputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return login;
+        return loginChange;
 
     }
 

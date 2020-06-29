@@ -35,16 +35,16 @@ public class ShrutiTest {
     public ShrutiTest() {
     }
 
-    @BeforeClass
+   // @BeforeClass
     public static void setUpClass() {
          login=FileUtil.getLoginData();
     }
 
-    @AfterClass
+  //  @AfterClass
     public static void tearDownClass() {
     }
 
-    @Before
+   // @Before
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:\\QA\\Drivers\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -52,12 +52,12 @@ public class ShrutiTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    @After
+   // @After
     public void tearDown() {
         //driver.close();
     }
     
-    @Test
+   // @Test
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("Home_Ancillary_0")).click();
@@ -70,7 +70,7 @@ public class ShrutiTest {
     }
 
     
- @Test
+ //@Test
     public void test49ValidEmailCorrectPassword() {
         // webscraper.saksham@gmail.com
         // icemountain123
@@ -90,4 +90,9 @@ public class ShrutiTest {
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,250)", "");
     }
+//        @FindBy([xpath = '//[iywegfiywfge]'])
+//    WebElement element;
+    
+//    WebElement element = driver.findElement(By.xpath('//[3rkgy]'));  
+
 }

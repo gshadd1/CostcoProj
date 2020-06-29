@@ -5,9 +5,11 @@ package com.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.itexps.costco.CartPage;
 import com.itexps.costco.FileUtil;
 import com.itexps.costco.HomePage;
 import com.itexps.costco.LoginVO;
+import com.itexps.costco.SignInPage;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -159,11 +161,11 @@ public class SearchProductTest {
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
         try{
-            driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+            driver.findElement(By.id("Home_Ancillary_0")).click();
         }catch(NoSuchElementException e){
             System.out.println("No grocery tab detected");
         }
-        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+        driver.findElement(By.linkText("Splenda No Calorie Sweetener, 1 g, 1,200-count")).click();
         Thread.sleep(3000);
         driver.findElement(By.id("add-to-cart-btn")).click();
         Thread.sleep(3000);
@@ -192,43 +194,83 @@ public class SearchProductTest {
         }
         
     }
-
+//
+//    @Test
+//    public void testCheckout7() throws Exception {
+//        driver.get("https://www.costco.com/");
+//        Thread.sleep(10000);
+//        try{
+//            driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+//        }catch(NoSuchElementException e){
+//            System.out.println("No grocery tab detected");
+//        }
+//        
+//        CartPage cart = PageFactory.initElements(driver, CartPage.class);
+//        Thread.sleep(3000);
+//        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+//        Thread.sleep(3000);
+//        driver.findElement(By.id("add-to-cart-btn")).click();
+//        Thread.sleep(3000);
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+//        Thread.sleep(15000);
+//        driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
+//        Thread.sleep(3000);
+//        driver.findElement(By.xpath("//div[@id='logon']/div/div/div/div")).click();
+//        assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
+//    }
+        
     @Test
-    public void testCheckout7() throws Exception {
+    public void testCheckout7() throws Exception{
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
         try{
-            driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+            driver.findElement(By.id("Home_Ancillary_0")).click();
         }catch(NoSuchElementException e){
             System.out.println("No grocery tab detected");
         }
+        
+        CartPage cart = PageFactory.initElements(driver, CartPage.class); //page object used here
         Thread.sleep(3000);
-        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+        driver.findElement(By.linkText("Dixie Ultra 10 1/16 in Paper Plate, 186-count")).click();
         Thread.sleep(3000);
-        driver.findElement(By.id("add-to-cart-btn")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
-        Thread.sleep(15000);
-        driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//div[@id='logon']/div/div/div/div")).click();
-        assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
+        cart.addToCartFunction();  //with page object
     }
-
-    @Test
+//    @Test
+//    public void testAddMoreItems9() throws Exception {
+//        driver.get("https://www.costco.com/");
+//        Thread.sleep(3000);
+//        driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+//        Thread.sleep(5000);
+//        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+//        driver.findElement(By.id("add-to-cart-btn")).click();
+//        Thread.sleep(3000);
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();//view cart done
+//        driver.findElement(By.id("RX_Home_Ancillary_0")).click();
+//        driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).click();
+//        driver.findElement(By.id("add-to-cart-btn")).click();
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+//        assertEquals("Frito Lay Classic Mix, Variety Pack, 30-count", driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).getText());
+//        assertEquals("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count", driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).getText());
+//    }
+        @Test
     public void testAddMoreItems9() throws Exception {
         driver.get("https://www.costco.com/");
-        Thread.sleep(3000);
-        driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        Thread.sleep(5000);
-        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
-        driver.findElement(By.id("add-to-cart-btn")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='costcoModalText']/div[2]/div/button"))).click();
-        driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).click();
-        driver.findElement(By.id("add-to-cart-btn")).click();
-        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+        CartPage cart2 = PageFactory.initElements(driver, CartPage.class);
+        cart2.addAnItemTOCart("Frito Lay Classic Mix, Variety Pack, 30-count");   //page object used here
+        
+//        Thread.sleep(3000);
+//        driver.findElement(By.id("Home_Ancillary_0")).click();
+//        Thread.sleep(5000);
+//        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+//        driver.findElement(By.id("add-to-cart-btn")).click();   
+//        Thread.sleep(3000);
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();//view cart
+
+         cart2.addAnItemTOCart("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count");
+//        driver.findElement(By.id("Home_Ancillary_0")).click();
+//        driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).click();
+//        driver.findElement(By.id("add-to-cart-btn")).click();
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();//view cart
         assertEquals("Frito Lay Classic Mix, Variety Pack, 30-count", driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).getText());
         assertEquals("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count", driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).getText());
     }
@@ -288,20 +330,41 @@ public class SearchProductTest {
         assertEquals("Your shopping cart is empty. Please add at least one item to your cart before checking out.", driver.findElement(By.xpath("//div[@id='empty-cart-id']/div")).getText());
     }
 
-    @Test
+//    @Test
+//    public void testAddItemNotLoggedIn15() throws Exception {
+//        driver.get("https://www.costco.com/");
+//        Thread.sleep(3000);
+//        try{
+//            driver.findElement(By.id("Home_Ancillary_0")).click();
+//        }catch(NoSuchElementException e){
+//            System.out.println("No grocery tab detected");
+//        }
+//        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+//        driver.findElement(By.id("add-to-cart-btn")).click();
+//        Thread.sleep(4000);
+//        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+//        Thread.sleep(15000);
+//        driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
+//        assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
+//    }
+
+     @Test
     public void testAddItemNotLoggedIn15() throws Exception {
-        driver.get("https://www.costco.com/");
+        driver.get("https://www.costco.com/");   
         Thread.sleep(3000);
-        try{
-            driver.findElement(By.id("RX_Home_Ancillary_0")).click();
-        }catch(NoSuchElementException e){
-            System.out.println("No grocery tab detected");
-        }
-        driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
-        driver.findElement(By.id("add-to-cart-btn")).click();
-        Thread.sleep(4000);
-        driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
-        Thread.sleep(15000);
+       try{
+          driver.findElement(By.id("Home_Ancillary_0")).click();
+       }catch(NoSuchElementException e){
+           System.out.println("No grocery tab detected");
+       }
+      // CartPage cart = PageFactory.initElements(driver, CartPage.class);( want to convert this also in page object but not done
+       
+      driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).click();
+    
+      driver.findElement(By.id("add-to-cart-btn")).click();
+       Thread.sleep(4000);
+       driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div[2]/a/button")).click();
+       Thread.sleep(15000);
         driver.findElement(By.id("shopCartCheckoutSubmitButton")).click();
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
     }
