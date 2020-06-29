@@ -49,7 +49,8 @@ public class ShrutiTest {
         System.setProperty("webdriver.chrome.driver", "C:\\QA\\Drivers\\chromedriver.exe");
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
    // @After
@@ -57,7 +58,7 @@ public class ShrutiTest {
         //driver.close();
     }
     
-   // @Test
+
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("Home_Ancillary_0")).click();

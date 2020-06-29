@@ -18,6 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -61,6 +62,8 @@ public class SignInTest {
         driver = new ChromeDriver();
         baseURL = "https://www.costco.com";
         driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1600, 900));
+        driver.manage().window().maximize();
     }
 
     @After
@@ -93,27 +96,33 @@ public class SignInTest {
 //        signINBox.click();  
     }
 
+//   
+    
     @Test
-    public void test50ValidEmailInCorrectPassword() {
+    public void test50ValidEmailInCorrectPassword() throws Exception {
         // webscraper.saksham@gmail.com
         // icemountain123
         driver.get(baseURL);
-        WebElement signIn = driver.findElement(By.id("header_sign_in"));
-        signIn.click();
-        WebElement emailAddress = driver.findElement(By.id("logonId"));
-        emailAddress.clear();
-        driver.findElement(By.id("logonId")).sendKeys("TESTS");   //data driven
-        //logonPassword
-        WebElement passWord = driver.findElement(By.id("logonPassword"));
-        passWord.clear();
-        driver.findElement(By.id("logonPassword")).sendKeys("zicZemountain");
-        WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
-        signINBox.click();
+//        WebElement signIn = driver.findElement(By.id("header_sign_in"));
+//        signIn.click();
+//        WebElement emailAddress = driver.findElement(By.id("logonId"));
+//        emailAddress.clear();
+//        driver.findElement(By.id("logonId")).sendKeys("ZTESTS");   //data driven
+//        //logonPassword
+//        WebElement passWord = driver.findElement(By.id("logonPassword"));
+//        passWord.clear();
+//        driver.findElement(By.id("logonPassword")).sendKeys("zicZemountain");
+//        WebElement signINBox = driver.findElement(By.cssSelector("#LogonForm > fieldset > div:nth-child(5) > input"));
+//        signINBox.click();
 
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,250)", "");
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.invalidlogin("Z9TESTS", "zicZemountain");
     }
-    
+
     @Test
     public void test51WrongEmail() throws Exception {
         driver.get(baseURL);
@@ -131,7 +140,7 @@ public class SignInTest {
 //        driver.findElement(By.id("logonPassword")).sendKeys("123###XXX");
 //        driver.findElement(By.xpath("//input[@value='Sign In']")).click();
         SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
-        signinpage.invalidlogin("badzlogin@gmail.com", "123###XXX");
+        signinpage.invalidlogin("bad9xzlogin@gmail.com", "123###XXX");
 
         String loginfailtext = driver.findElement(By.xpath("//*[@id=\"logon\"]/div/div/div[1]")).getText();
         assertEquals("There was a problem with your information. Please try again.", loginfailtext);
@@ -154,7 +163,7 @@ public class SignInTest {
 //        driver.findElement(By.id("logonId")).sendKeys("passxxwdreset@aol.com");
 //        driver.findElement(By.linkText("Forgot Password?")).click();
         SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
-        signinpage.resetpassword("passxxwdreset@aol.com");
+        signinpage.resetpassword("passzzwdreset@aol.com");
 
         String title = driver.getTitle();
         assertEquals("Forgot Your Password?", title);
@@ -166,51 +175,59 @@ public class SignInTest {
         driver.manage().window().maximize();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(20,250)");
-        driver.get(baseURL); 
-        driver.findElement(By.xpath("//a[@id=\"header_sign_in\"]")).click(); //X-path manual add quantity 
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(login.getUsername());
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(login.getPassword());
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).submit(); //submit by pressing enter
+        driver.get(baseURL);
+//        driver.findElement(By.xpath("//a[@id=\"header_sign_in\"]")).click(); //X-path manual add quantity 
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(login.getUsername());
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(login.getPassword());
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).submit(); //submit by pressing enter
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.validlogin(login);
+        Thread.sleep(3000);
+
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Welcome to Costco Wholesale";
-        System.out.println("Page Title: "+actualTitle);
-        assertEquals(expectedTitle,actualTitle);
+        String expectedTitle = "Add Membership Number";
+        System.out.println("Page Title: " + actualTitle);
+        assertEquals(expectedTitle, actualTitle);
 
         //driver.findElement(By.xpath("//*[@id=\"LogonForm\"]/fieldset/div[5]/input")).click(); // alternatively by clicking submit button
         //String quantityText = driver.findElement(By.xpath("//*[@id=\"items-quantity-title\"]")).getText(); //view Cart page (# Items)
         //System.out.println("Item Quantity" + quantityText);  // prints items quantity (# Items)
         //assertEquals(" (2 Items)", quantityText);*/
-        
     }
-    
-    
+
     @Test
     public void testInvalidSignIn() throws Exception {
         // Add item and view cart before logging in
         driver.manage().window().maximize();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(20,250)");
-        driver.get(baseURL); 
-        driver.findElement(By.xpath("//a[@id=\"header_sign_in\"]")).click(); //X-path manual add quantity 
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("zxabc@abc.com");
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("abc123");
-        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).submit(); //submit by pressing enter
+        driver.get(baseURL);
+//        driver.findElement(By.xpath("//a[@id=\"header_sign_in\"]")).click(); //X-path manual add quantity 
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).click();
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.CONTROL + "a");
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys(Keys.DELETE);
+//        driver.findElement(By.xpath("//input[@id=\"logonId\"]")).sendKeys("yyabc@abc.com");
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.CONTROL + "a");
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys(Keys.DELETE);
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).sendKeys("abc123");
+//        driver.findElement(By.xpath("//input[@id=\"logonPassword\"]")).submit(); //submit by pressing enter
+
+        HomePage homepage = PageFactory.initElements(driver, HomePage.class);
+        homepage.signinbttn();
+        SignInPage signinpage = PageFactory.initElements(driver, SignInPage.class);
+        signinpage.invalidlogin("y9abc@abc.com", "abc123");
         String signInError = driver.findElement(By.xpath("//div[@class=\"critical-notification form-group\"]")).getText(); //Sign In Error
         System.out.println("Error" + signInError);  // prints items Sign In Error
-        assertEquals("There was a problem with your information. Please try again." ,signInError);
-        
+        assertEquals("There was a problem with your information. Please try again.", signInError);
+
     }
-
-
 }
 
