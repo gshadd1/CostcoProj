@@ -206,7 +206,24 @@ public class ManagerTest {
     }
   
 
+        public void testSetupAutomaticRenewal() throws Exception{
     
+       driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.setupAutomaticRenewal();           
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }  
+       }
+       assertEquals("How can I manage membership Auto Renewal online?", driver.getTitle());
+    }
+
     
 
     private boolean isElementPresent(By by) {
