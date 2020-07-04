@@ -5,12 +5,19 @@
  */
 package com.itexps.costco;
 
+import org.openqa.selenium.WebDriver;
+
 /**
  *
  * @author gregshadd
  */
 public class CustomerServicePage {
     //Adding greg shaddd
-    int greg=0;
+    WebDriver driver;
+
+    public CustomerServicePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     
 }
