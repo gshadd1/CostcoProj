@@ -10,5 +10,7 @@ package com.itexps.costco;
  * @author gregshadd
  */
 public class CustomerServicePage {
+    //Adding greg shaddd
+    int greg=0;
     
 }
