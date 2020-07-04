@@ -6,6 +6,8 @@
 package com.itexps.costco;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  *
@@ -18,6 +20,11 @@ public class CustomerServicePage {
     public CustomerServicePage(WebDriver driver) {
         this.driver = driver;
     }
+ @FindBy(xpath = "//div[@id='costcoModalText']/div[2]/div[2]/a/button")
+   private WebElement updateMembershipInfo;
+   // updateMembershipInfo(
 
-    
+    public void updateMembershipInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
