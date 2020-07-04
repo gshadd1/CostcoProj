@@ -5,6 +5,8 @@
  */
 package com.test;
 
+import com.itexps.costco.CustomerServicePage;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,6 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -181,6 +184,30 @@ public class ManagerTest {
         driver.findElement(By.xpath("//div[@id='custompath_search_results']/div/div/div/div/p")).click();
 
     }
+    
+    
+        @Test
+    public void testUpdateMembershipInfo() throws Exception{
+    
+      driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.updateMembershipInfo();             
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }  
+       }
+       assertEquals("How can I make changes to my membership account?", driver.getTitle());
+    }
+  
+
+    
+    
 
     private boolean isElementPresent(By by) {
         try {
