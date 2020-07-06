@@ -94,13 +94,6 @@ public class GregTest {
   driver.switchTo().activeElement().findElement(By.xpath("//input[@value='Find a Warehouse']")).click();
   
   
-   // driver.switchTo().alert().sendKeys("hanover park, il 60133");
-    //driver.findElement(By.xpath("//input[@value='Find a Warehouse']")).click();
-   // driver.findElement(By.xpath("(//img[@alt='Costco US homepage'])[2]")).click();
-   // driver.findElement(By.id("warehouse-savings")).click();
-   // driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();
-   // driver.findElement(By.id("customer-service-link")).click();
-   // driver.findElement(By.id("yui_3_18_1_6_1592166786155_6")).click();
   }
   
    //  @Test
