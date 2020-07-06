@@ -110,7 +110,7 @@ public class ManagerTest {
         assertEquals("Welcome to Costco Customer Service.", ele2);
     }
 
- //   @Test
+    @Test
     public void test22cEmailOffer() throws Exception {
         driver.get(baseURL);
         WebElement ele = driver.findElement(By.id("email-signup-link"));
@@ -152,7 +152,7 @@ public class ManagerTest {
         // assertEquals(text, newSelectedOption.getText().trim());
     }
 
-  //  @Test
+    @Test
     public void test26ValidZipAccepted() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(baseURL);
@@ -186,7 +186,7 @@ public class ManagerTest {
     }
     
     
-  //      @Test
+       // @Test
     public void testUpdateMembershipInfo() throws Exception{
     
       driver.manage().window().maximize();
@@ -205,7 +205,7 @@ public class ManagerTest {
        assertEquals("How can I make changes to my membership account?", driver.getTitle());
     }
   
-
+    //@Test
         public void testSetupAutomaticRenewal() throws Exception{
     
        driver.manage().window().maximize();
