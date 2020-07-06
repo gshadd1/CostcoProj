@@ -78,7 +78,7 @@ public class SearchProductTest {
         driver.close();
     }
 
-    @Test
+  //  @Test
     public void test38SearchbyItemnumber() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -152,7 +152,7 @@ public class SearchProductTest {
         assertEquals("XPS7590-9589SLV-PUS", itemmodeltext);
     }
 
-    @Test
+ //   @Test
     public void test43SelectProductviaImage() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -169,7 +169,7 @@ public class SearchProductTest {
         assertEquals("i3593-5081BLK-PUS", itemmodeltext);
     }
 
-    @Test
+ //   @Test
     public void testContinueShopping8() throws Exception {
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
@@ -185,7 +185,7 @@ public class SearchProductTest {
         driver.findElement(By.xpath("//div[@id='costcoModalText']/div[2]/div/button")).click();
     }
 
-    @Test
+ //   @Test
     public void testRemoveItem6() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("header_sign_in")).click();
