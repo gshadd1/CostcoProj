@@ -95,7 +95,7 @@ public class SearchProductTest {
 //LG 55" Class - CX Series - 4K UHD OLED TV - $100 SquareTrade Protection Plan Bundle Included
     }
 
-    @Test
+ //   @Test
     public void test40SearchbyInvalidProduct() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -111,7 +111,7 @@ public class SearchProductTest {
         assertEquals("We're sorry. We were not able to find a match. ", notfoundtext);
     }
 
-    @Test
+  //  @Test
     public void test41SearchbyInvalidtoValidProduct() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -134,7 +134,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+ //   @Test
     public void test42SelectProductviaText() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -232,7 +232,7 @@ public class SearchProductTest {
 //        assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
 //    }
         
-    @Test
+  //  @Test
     public void testCheckout7() throws Exception{
         driver.get("https://www.costco.com/");
         Thread.sleep(10000);
@@ -264,7 +264,7 @@ public class SearchProductTest {
 //        assertEquals("Frito Lay Classic Mix, Variety Pack, 30-count", driver.findElement(By.linkText("Frito Lay Classic Mix, Variety Pack, 30-count")).getText());
 //        assertEquals("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count", driver.findElement(By.linkText("Clif Bar Energy Bars, Variety Pack, 2.40 oz, 24-count")).getText());
 //    }
-        @Test
+   //     @Test
     public void testAddMoreItems9() throws Exception {
         driver.get("https://www.costco.com/");
         CartPage cart2 = PageFactory.initElements(driver, CartPage.class);
@@ -287,7 +287,7 @@ public class SearchProductTest {
         assertEquals("Sunny D, Tangy Original, 11.3 fl oz, 30-count", driver.findElement(By.linkText("Sunny D, Tangy Original, 11.3 fl oz, 30-count")).getText());
     }
 
-    @Test
+ //   @Test
     public void testDelivery10() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("header_sign_in")).click();
@@ -303,7 +303,7 @@ public class SearchProductTest {
         assertEquals("Shipping Address", driver.findElement(By.xpath("//div[@id='shipping']/div/div/div/div/h2")).getText());
     }
 
-    @Test
+   // @Test
     public void testRemoveAllProducts11() throws Exception {
         boolean found = true;
         driver.get("https://www.costco.com/");
@@ -328,7 +328,7 @@ public class SearchProductTest {
         assertEquals("Your shopping cart is empty. Please add at least one item to your cart before checking out.", driver.findElement(By.id("empty-cart-id")).getText());
     }
 
-    @Test
+ //   @Test
     public void testVerifyContinueShopping13() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.id("header_sign_in")).click();
@@ -360,7 +360,7 @@ public class SearchProductTest {
 //        assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
 //    }
 
-     @Test
+  //   @Test
     public void testAddItemNotLoggedIn15() throws Exception {
         driver.get("https://www.costco.com/");   
         Thread.sleep(3000);
@@ -381,7 +381,7 @@ public class SearchProductTest {
         assertEquals("Sign in to access your Costco.com account.", driver.findElement(By.xpath("//form[@id='LogonForm']/fieldset/div/span")).getText());
     }
 
-    @Test
+ //   @Test
     public void testAddItem() throws Exception {
         // Add item and view cart before logging in
         driver.manage().window().maximize();
@@ -408,7 +408,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+ //   @Test
     public void testViewCart() throws Exception {
         // Add item and view cart after logging in
         driver.manage().window().maximize();
@@ -439,7 +439,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+  //  @Test
     public void testShipping() throws Exception {
         driver.manage().window().maximize();
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -465,7 +465,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+//    @Test
     public void testOutOfStock() throws Exception {
         driver.manage().window().maximize();
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -480,7 +480,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+  //  @Test
     public void testLimit() throws Exception {
         // Add item and view cart after logging in
         driver.manage().window().maximize();
@@ -498,7 +498,7 @@ public class SearchProductTest {
 
     }
 
-    @Test
+//    @Test
     public void test44SelectProductupdateQuan() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -525,7 +525,7 @@ public class SearchProductTest {
         //driver.findElement(By.linkText("Remove")).click();
     }
 
-    @Test
+ //   @Test
     public void test45DisplayProductInfo() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -544,7 +544,7 @@ public class SearchProductTest {
         assertEquals("Perrier", iteminfotext);
     }
 
-    @Test
+ //   @Test
     public void test46GrocerySearchItemSuccess() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -563,7 +563,7 @@ public class SearchProductTest {
         assertEquals("We found 3 results for \"cheerios\"", foundgrocerytext);
     }
 
-    @Test
+  //  @Test
     public void test47GrocerySearchItemFail() throws InterruptedException, Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();

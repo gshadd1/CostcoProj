@@ -76,7 +76,7 @@ public class ManagerTest {
         driver.close();
     }
 
-    @Test
+ //   @Test
     public void test22FindAWarehouse() throws Exception {
         //Finding warehouse by a given zip code
         driver.get(baseURL);
@@ -110,7 +110,7 @@ public class ManagerTest {
         assertEquals("Welcome to Costco Customer Service.", ele2);
     }
 
-    @Test
+ //   @Test
     public void test22cEmailOffer() throws Exception {
         driver.get(baseURL);
         WebElement ele = driver.findElement(By.id("email-signup-link"));
@@ -120,7 +120,7 @@ public class ManagerTest {
         assertEquals("Be the first to know - subscribe to receive Costco emails.", ele2);
     }
 
-    @Test
+//    @Test
     //Note Postal code some sometimes do not show on website
     public void test27InValidZipNotAccepted() {
         driver.get(baseURL);
@@ -152,7 +152,7 @@ public class ManagerTest {
         // assertEquals(text, newSelectedOption.getText().trim());
     }
 
-    @Test
+  //  @Test
     public void test26ValidZipAccepted() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(baseURL);
@@ -174,7 +174,7 @@ public class ManagerTest {
         assertEquals("Delivery ZIP Code: 70001", ele3);
     }
 
-    @Test
+ //   @Test
     public void test30CostcotravelForm() throws Exception {
         driver.get("https://www.costco.com/");
         driver.findElement(By.xpath("//img[@alt='Costco US homepage']")).click();
@@ -186,7 +186,7 @@ public class ManagerTest {
     }
     
     
-        @Test
+  //      @Test
     public void testUpdateMembershipInfo() throws Exception{
     
       driver.manage().window().maximize();

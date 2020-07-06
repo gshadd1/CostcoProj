@@ -71,7 +71,7 @@ public class SignInTest {
         driver.close();
     }
     
-    @Test
+ //   @Test
     public void test49ValidEmailCorrectPassword() throws Exception {
         
         driver.get(baseURL);
@@ -98,7 +98,7 @@ public class SignInTest {
 
 //   
     
-    @Test
+ //   @Test
     public void test50ValidEmailInCorrectPassword() throws Exception {
         // webscraper.saksham@gmail.com
         // icemountain123
@@ -123,7 +123,7 @@ public class SignInTest {
         signinpage.invalidlogin("Z9TESTS", "zicZemountain");
     }
 
-    @Test
+  //  @Test
     public void test51WrongEmail() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -149,7 +149,7 @@ public class SignInTest {
 
     }
 
-    @Test
+  //  @Test
     public void test52ResetPassword() throws Exception {
         driver.get(baseURL);
         //driver.manage().window().maximize();
@@ -169,7 +169,7 @@ public class SignInTest {
         assertEquals("Forgot Your Password?", title);
     }
     
-    @Test
+   // @Test
     public void testValidSignIn() throws Exception {
         // Add item and view cart before logging in
         driver.manage().window().maximize();
@@ -203,7 +203,7 @@ public class SignInTest {
         //assertEquals(" (2 Items)", quantityText);*/
     }
 
-    @Test
+ //   @Test
     public void testInvalidSignIn() throws Exception {
         // Add item and view cart before logging in
         driver.manage().window().maximize();
