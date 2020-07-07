@@ -152,7 +152,7 @@ public class ManagerTest {
         // assertEquals(text, newSelectedOption.getText().trim());
     }
 
-   // @Test
+    @Test
     public void test26ValidZipAccepted() throws InterruptedException {
         driver.manage().window().maximize();
         driver.get(baseURL);
