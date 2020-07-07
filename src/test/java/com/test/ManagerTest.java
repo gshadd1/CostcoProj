@@ -76,7 +76,7 @@ public class ManagerTest {
         driver.close();
     }
 
-   @Test
+   //@Test
     public void test22FindAWarehouse() throws Exception {
         //Finding warehouse by a given zip code
         driver.get(baseURL);
