@@ -99,7 +99,7 @@ public class ManagerTest {
         // assertEquals("Bloomingdale", loc);
     }
 
-    @Test
+   // @Test
     //Working last tested on 6-23
     public void test22bCustomerservice() throws Exception {
         driver.get(baseURL);
@@ -110,7 +110,7 @@ public class ManagerTest {
         assertEquals("Welcome to Costco Customer Service.", ele2);
     }
 
-    @Test
+  //  @Test
     public void test22cEmailOffer() throws Exception {
         driver.get(baseURL);
         WebElement ele = driver.findElement(By.id("email-signup-link"));
@@ -186,7 +186,7 @@ public class ManagerTest {
     }
     
     
-       // @Test
+        @Test
     public void testUpdateMembershipInfo() throws Exception{
     
       driver.manage().window().maximize();
@@ -205,7 +205,7 @@ public class ManagerTest {
        assertEquals("How can I make changes to my membership account?", driver.getTitle());
     }
   
-    //@Test
+    @Test
         public void testSetupAutomaticRenewal() throws Exception{
     
        driver.manage().window().maximize();
@@ -223,8 +223,88 @@ public class ManagerTest {
        }
        assertEquals("How can I manage membership Auto Renewal online?", driver.getTitle());
     }
+        
+        
+          @Test
+    public void testReturnMyOrder() throws Exception{
+    
+       driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.returnMyOrder();
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }
+       }
+       assertEquals("Return your Costco.com Online Order", driver.getTitle());
+     }
+     
+    
+          @Test
+    public void testCancelMyOrder() throws Exception{
+    
+       driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.cancelMyOrder();
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }  
+       }
+       assertEquals("Order Cancellations", driver.getTitle());
+    }
 
     
+    //requestPriceAdjustment()
+          @Test
+    public void testRequestPriceAdjustment() throws Exception{
+    
+       driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.requestPriceAdjustment();
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }  
+       }
+       assertEquals("Price Adjustment - Costco.com Orders", driver.getTitle());
+    }
+
+     //  public void verifyMyMembership(){
+         @Test
+    public void testVerifyMyMembership() throws Exception{
+    
+       driver.manage().window().maximize();
+        CustomerServicePage csp = PageFactory.initElements(driver, CustomerServicePage.class);
+      driver.get( "https://customerservice.costco.com/");
+       csp.verifyMyMembership();   
+      String parent = driver.getWindowHandle();
+      Set<String> allWindows= driver.getWindowHandles();
+       for(String child:allWindows){
+       
+       if(!parent.equalsIgnoreCase(child))
+       {
+              driver.switchTo().window(child);
+       }  
+       }
+       assertEquals("How can I verify my membership online?", driver.getTitle());
+    }
+
 
     private boolean isElementPresent(By by) {
         try {
