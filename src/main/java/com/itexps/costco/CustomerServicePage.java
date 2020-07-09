@@ -20,25 +20,25 @@ public class CustomerServicePage {
     public CustomerServicePage(WebDriver driver) {
         this.driver = driver;
     }
+ //"//div[@id='selfServiceColumns']/ul/a/li"
  
- 
- @FindBy(xpath = "//div[@id='costcoModalText']/div/div/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul/a/li")
    private WebElement returnMyOrder;
  
- @FindBy(xpath = "//div[@id='costcoModalText']/div/div[1]/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul/a[2]/li")
    private WebElement cancelMyOrder;
  
- @FindBy(xpath = "//div[@id='costcoModalText']/div/div[2]/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul/a[3]/li")
    private WebElement requestPriceAdjustment;
  
  //Column 2
- @FindBy(xpath = "//div[@id='costcoModalText']/div[2]/div/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul[2]/a/li")
    private WebElement verifyMyMembership;
  
- @FindBy(xpath = "//div[@id='costcoModalText']/div[2]/div[1]/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul[2]/a[2]/li")
    private WebElement setupAutomaticrenewal;
  
- @FindBy(xpath = "//div[@id='costcoModalText']/div[2]/div[2]/a/button")
+ @FindBy(xpath = "//div[@id='selfServiceColumns']/ul[2]/a[3]/li")
    private WebElement updateMembershipInfo;
 
 
