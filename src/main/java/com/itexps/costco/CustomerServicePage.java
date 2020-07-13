@@ -41,9 +41,6 @@ public class CustomerServicePage {
  @FindBy(xpath = "//div[@id='selfServiceColumns']/ul[2]/a[3]/li")
    private WebElement updateMembershipInfo;
 
-
- 
- 
    // updateMembershipInfo(
 
  
