@@ -186,7 +186,7 @@ public class ManagerTest {
     }
     
     
-        @Test
+      //  @Test
     public void testUpdateMembershipInfo() throws Exception{
     
       driver.manage().window().maximize();
@@ -205,7 +205,7 @@ public class ManagerTest {
        assertEquals("How can I make changes to my membership account?", driver.getTitle());
     }
   
-    @Test
+  //  @Test
         public void testSetupAutomaticRenewal() throws Exception{
     
        driver.manage().window().maximize();
@@ -225,7 +225,7 @@ public class ManagerTest {
     }
         
         
-          @Test
+     //     @Test
     public void testReturnMyOrder() throws Exception{
     
        driver.manage().window().maximize();
@@ -245,7 +245,7 @@ public class ManagerTest {
      }
      
     
-         @Test
+      //   @Test
     public void testCancelMyOrder() throws Exception{
     
        driver.manage().window().maximize();
@@ -266,7 +266,7 @@ public class ManagerTest {
 
     
     //requestPriceAdjustment()
-          @Test
+      //    @Test
     public void testRequestPriceAdjustment() throws Exception{
     
        driver.manage().window().maximize();

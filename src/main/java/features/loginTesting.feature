@@ -12,7 +12,7 @@ Then I enter the following Login
 
 And I click on login button
 Then I should see the userform page
-Then user close the browser
+Then users close the browser
 
 
 Scenario: Login to Costco with incorrect  username and password
@@ -24,4 +24,4 @@ Then I enter the following Login
 
 And I click on login button
 Then I should see invalid username or password
-Then user close the browser
+Then users close the browser

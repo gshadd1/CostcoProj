@@ -13,5 +13,5 @@ Then user clicks on one of the service buttons
 
 Then page for associated button will appear
 Then verify the corect page
-Then user close the browser
+Then users close the browser
    

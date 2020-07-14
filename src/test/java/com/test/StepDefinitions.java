@@ -51,11 +51,18 @@ public void verify_the_corect_page() throws Throwable {
     throw new PendingException();
 }
 
-@Then("^user close the browser$")
-public void user_close_the_browser() throws Throwable {
+//@Then("^user close the browser$")
+//public void user_close_the_browser() throws Throwable {
+//    // Write code here that turns the phrase above into concrete actions
+//    throw new PendingException();
+//}
+
+@Then("^users close the browser$")
+public void users_close_the_browser() throws Throwable {
     // Write code here that turns the phrase above into concrete actions
     throw new PendingException();
 }
+
 
 @Given("^Navigate to Costco Home Page$")
 public void navigate_to_Costco_Home_Page() throws Throwable {
